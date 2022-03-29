@@ -25,31 +25,33 @@ class BottomNavSimple extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Expanded(
-                        child: IconTheme(
-                          data: IconThemeData(
-                              size: item.iconSize,
-                              color: isSelected
-                                  ? (item.activeColorSecondary == null
-                                      ? item.activeColorPrimary
-                                      : item.activeColorSecondary)
-                                  : item.inactiveColorPrimary == null
-                                      ? item.activeColorPrimary
-                                      : item.inactiveColorPrimary),
-                          child: isSelected
-                              ? item.icon
-                              : item.inactiveIcon ?? item.icon,
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: height != null ? (height * 0.1) : 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Expanded(
+                          child: Center(
+                              child: IconTheme(
+                            data: IconThemeData(
+                                size: item.iconSize,
+                                color: isSelected
+                                    ? (item.activeColorSecondary == null
+                                        ? item.activeColorPrimary
+                                        : item.activeColorSecondary)
+                                    : item.inactiveColorPrimary == null
+                                        ? item.activeColorPrimary
+                                        : item.inactiveColorPrimary),
+                            child: isSelected
+                                ? item.icon
+                                : item.inactiveIcon ?? item.icon,
+                          )),
                         ),
-                      ),
-                      item.title == null
-                          ? SizedBox.shrink()
-                          : Padding(
-                              padding: const EdgeInsets.only(top: 15.0),
-                              child: Material(
+                        item.title == null
+                            ? SizedBox.shrink()
+                            : Material(
                                 type: MaterialType.transparency,
                                 child: FittedBox(
                                     child: Text(
@@ -72,9 +74,9 @@ class BottomNavSimple extends StatelessWidget {
                                           fontWeight: FontWeight.w400,
                                           fontSize: 12.0),
                                 )),
-                              ),
-                            )
-                    ],
+                              )
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -88,15 +90,14 @@ class BottomNavSimple extends StatelessWidget {
       width: double.infinity,
       height: this.navBarEssentials!.navBarHeight,
       padding: EdgeInsets.only(
-        left: this.navBarEssentials!.padding?.left ??
-            MediaQuery.of(context).size.width * 0.04,
-        right: this.navBarEssentials!.padding?.right ??
-            MediaQuery.of(context).size.width * 0.04,
-        top: this.navBarEssentials!.padding?.top ??
-            this.navBarEssentials!.navBarHeight! * 0.15,
-        bottom: this.navBarEssentials!.padding?.bottom ??
-            this.navBarEssentials!.navBarHeight! * 0.12,
-      ),
+          left: this.navBarEssentials!.padding?.left ??
+              MediaQuery.of(context).size.width * 0.04,
+          right: this.navBarEssentials!.padding?.right ??
+              MediaQuery.of(context).size.width * 0.04,
+          top: this.navBarEssentials!.padding?.top ??
+              this.navBarEssentials!.navBarHeight! * 0.15,
+          bottom: this.navBarEssentials!.padding?.bottom ??
+              this.navBarEssentials!.navBarHeight! * 0.12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
